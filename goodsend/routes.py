@@ -1,12 +1,8 @@
 from goodsend import app, db, Message, mail
 from flask import render_template, request, redirect, url_for
 from goodsend.forms import UserInfoForm, LoginForm
-<<<<<<< HEAD
 #import models
-from goodsend.models import Waitlist, Onboarded, check_password_hash, generate_password_hash
-=======
-from goodsend.models import Users, check_password_hash
->>>>>>> 97b550ef347081c0f466e71f40b1b8b33335532b
+from goodsend.models import Waitlist, Onboarded, check_password_hash, generate_password_hash, Users
 from flask_login import login_required,login_user,current_user,logout_user
 import os
 import stripe
