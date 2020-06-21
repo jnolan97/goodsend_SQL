@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container content">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="justify-content-center">Register to become a beneficiary</h1>
+
+            <!-- Signup Form which comes from Flask Route-->
+            <form action="" method="post">
+                {{ update_form.hidden_tag() }}
+                <div class="form-group">
+                    <div class="row">
+                    <div class="col-md-6 col-lg-6 col-md-12">
+                    <fieldset>
+                        {{ update_form.first_name.label }}
+                        {{ update_form.first_name(class="form-control", placeholder="First Name")}}
+                    </fieldset>
+                </div>
+                <div class="col-md-6 col-lg-6 col-md-12">   
+                    <fieldset>
+                        {{ update_form.last_name.label }}
+                        {{ update_form.last_name(class="form-control", placeholder="Last Name")}}
+                    </fieldset>
+                </div>
+            </div> 
+                    <fieldset>
+                        {{ update_form.email.label }}
+                        {{ update_form.email(class="form-control", placeholder="Email") }}
+                    </fieldset>
+                    <fieldset>
+                        {{ update_form.phone_number.label }}
+                        {{ update_form.phone_number(class="form-control", placeholder="Phone Number") }}
+                    </fieldset>
+                    <fieldset>
+                        {{ update_form.password.label }}
+                        {{ update_form.password(class="form-control", placeholder="Password") }}
+                    </fieldset>
+                    <fieldset>
+                        {{ update_form.confirm_pass.label }}
+                        {{ update_form.confirm_pass(class="form-control", placeholder="Confirm Password") }}
+                    </fieldset>
+                    {{ update_form.submit(class="btn btn-primary button") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
