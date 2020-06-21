@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for
 from goodsend.forms import UserInfoForm, LoginForm
 #import models
 from goodsend.models import Waitlist, Onboarded, check_password_hash, generate_password_hash, Users
+from goodsend.models import Users, check_password_hash
 from flask_login import login_required,login_user,current_user,logout_user
 import os
 import stripe
