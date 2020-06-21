@@ -2,8 +2,8 @@ from goodsend import app, db, Message, mail
 from flask import render_template, request, redirect, url_for
 from goodsend.forms import UserInfoForm, LoginForm
 #import models
-from goodsend.models import Waitlist, Onboarded, check_password_hash, generate_password_hash, Users
-from goodsend.models import Users, check_password_hash
+# from goodsend.models import Waitlist, Onboarded, check_password_hash, generate_password_hash, Users
+from goodsend.models import Users, check_password_hash,  generate_password_hash
 from flask_login import login_required,login_user,current_user,logout_user
 import os
 import stripe
@@ -16,18 +16,18 @@ stripe.api_key = os.environ.get('STRIPE_KEY')
 @login_required
 def home():
     balance = stripe.Balance.retrieve()
-    registered = Waitlist.query.all()
-    active = Onboarded.query.all()
-    active_count = 0
+    registered = Users.query.all()
+    # active = Onboarded.query.all()
+    # active_count = 0
     count = 0
     users = 1
     current = current_user.id
     users_before = current - users
     for user in registered:
         count += 1
-    for a in active:
-        active_count += 1
-    return render_template("data.html", balance=balance, count=count, users_before=users_before, active_count=active_count)
+    # for a in active:
+    #     active_count += 1
+    return render_template("data.html", balance=balance, count=count, users_before=users_before)
 
 #Register Route
 @app.route('/register', methods=['GET','POST'])
@@ -84,7 +84,7 @@ def logout():
 @app.route('/update/<int:user_id>',methods = ['GET','POST'])
 @login_required
 def update(user_id):
-    update = Waitlist.query.get_or_404(user_id)
+    update = Users.query.get_or_404(user_id)
     update_form = UserInfoForm()
 
     if request.method == 'POST' and update_form.validate():
